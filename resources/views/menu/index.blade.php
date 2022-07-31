@@ -3,7 +3,7 @@
 
 
 @section('title')
-<title>List Category</title>
+<title>List Menu</title>
 @endsection
 
 @section('content')
@@ -11,18 +11,18 @@
     <div class="content">
       <div class="container-fluid">
           <div class="card">
-            @include('partials.content-header' , ['name' => 'List Category'])
+            @include('partials.content-header' , ['name' => 'List Menu'])
             <div class="card-body">
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th>Category Slug</th>
-                  <th>Category Name</th>
+                  <th>Menu Slug</th>
+                  <th>Menu Name</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                  @foreach ($categories as $item)
+                  {{-- @foreach ($categories as $item)
                     <tr>
                       <td>{{ $item->slug }}</td>
                       <td>
@@ -34,12 +34,12 @@
                       </td>
                     </tr>
                   @endforeach
-                  
+                   --}}
                 </tbody>
               </table>
               
               <div class="mt-3">
-                {!! $categories->withQueryString()->links('pagination::bootstrap-5') !!}
+                {{-- {!! $categories->withQueryString()->links('pagination::bootstrap-5') !!} --}}
               </div>
             </div>
           </div>

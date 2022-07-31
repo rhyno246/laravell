@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MenuController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +24,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
+//category
 Route::get('/categories', [CategoryController::class, 'index']);
 
 Route::get('/categories/create', [CategoryController::class, 'create']);
@@ -32,7 +35,16 @@ Route::get('/categories/edit/{id}', [CategoryController::class, 'edit']);
 
 Route::post('/categories/update/{id}', [CategoryController::class, 'update']);
 
-Route::post('/categories/delete/{id}', [CategoryController::class, 'delete']);
+Route::get('/categories/delete/{id}', [CategoryController::class, 'delete']);
+
+
+//menu
+Route::get('/menu', [MenuController::class, 'index']);
+
+Route::get('/menu/create', [MenuController::class, 'create']);
+
+Route::post('/menu/store', [MenuController::class, 'store']);
+
 
 
 

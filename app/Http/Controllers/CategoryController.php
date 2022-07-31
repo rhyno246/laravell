@@ -59,6 +59,7 @@ class CategoryController extends Controller
     }
 
     public function delete ($id) {
-        return 'delete';
+        $this->category->find($id)->delete();
+        return redirect('/categories'); 
     }
 }
