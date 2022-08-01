@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('backend/plugins/fontawesome-free/css/all.min.css')}}">
     {{-- <link rel="stylesheet" href="{{ asset('backend/plugins/jsgrid/jsgrid.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/jsgrid/jsgrid-theme.min.css')}}"> --}}
+    <link rel="stylesheet" href="{{ asset('backend/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/dist/css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/dist/css/custom.css') }}">
 </head>

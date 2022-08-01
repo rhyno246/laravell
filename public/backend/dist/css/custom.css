@@ -8,3 +8,7 @@
 .btn-action {
     max-width: 200px;
 }
+.login-page,
+.register-page {
+    margin-top: -10%;
+}

@@ -18,11 +18,11 @@ class MenuController extends Controller
 
     public function index () {
         $menus = $this->menu->latest()->paginate(5);
-        return view ('menu.index' , compact('menus'));
+        return view ('admin.menu.index' , compact('menus'));
     }
     public function create ($parentId = '') {
         $htmlOption = $this->getMenus($parentId);
-        return view ('menu.create', compact('htmlOption'));
+        return view ('admin.menu.create', compact('htmlOption'));
     }
 
     
@@ -32,7 +32,7 @@ class MenuController extends Controller
             'parent_id' => $request->parent_id,
             'slug' => Str::slug($request->name)
         ]);
-        return redirect('/menu');
+        return redirect('/admin.menu');
     }
 
     public function getMenus ($parentId){
@@ -45,7 +45,7 @@ class MenuController extends Controller
     public function edit ($id){
         $menu = $this->menu->find($id);
         $htmlOption = $this->getMenus($menu->parent_id);
-        return view('menu.edit' , compact('menu' , 'htmlOption'));
+        return view('admin.menu.edit' , compact('menu' , 'htmlOption'));
     }
 
     public function update ($id , Request $request){
@@ -54,12 +54,12 @@ class MenuController extends Controller
             'parent_id' => $request->parent_id,
             'slug' => Str::slug($request->name)
         ]);
-        return redirect('/menu');
+        return redirect('/admin.menu');
     }
 
     public function delete ($id) {
         $this->menu->find($id)->delete();
-        return redirect('/menu'); 
+        return redirect('/admin.menu'); 
     }
     
 }
