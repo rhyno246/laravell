@@ -22,24 +22,24 @@
                 </tr>
                 </thead>
                 <tbody>
-                  {{-- @foreach ($categories as $item)
+                  @foreach ($menus as $item)
                     <tr>
                       <td>{{ $item->slug }}</td>
                       <td>
                         {{ $item->name }}
                       </td>
                       <td>
-                        <a href="{{ URL::to('/categories/edit', ['id' => $item->id]) }}" class="btn btn-primary">Edit</a>
-                        <a href="{{ URL::to('/categories/delete', ['id' => $item->id]) }}" class="btn btn-danger">Delete</a>
+                        <a href="{{ URL::to('/menu/edit', ['id' => $item->id]) }}" class="btn btn-primary">Edit</a>
+                        <a href="{{ URL::to('/menu/delete', ['id' => $item->id]) }}" class="btn btn-danger">Delete</a>
                       </td>
                     </tr>
                   @endforeach
-                   --}}
+                  
                 </tbody>
               </table>
               
               <div class="mt-3">
-                {{-- {!! $categories->withQueryString()->links('pagination::bootstrap-5') !!} --}}
+                {!! $menus->withQueryString()->links('pagination::bootstrap-5') !!}
               </div>
             </div>
           </div>

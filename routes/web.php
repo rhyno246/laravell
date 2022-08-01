@@ -45,6 +45,12 @@ Route::get('/menu/create', [MenuController::class, 'create']);
 
 Route::post('/menu/store', [MenuController::class, 'store']);
 
+Route::get('/menu/edit/{id}', [MenuController::class, 'edit']);
+
+Route::post('/menu/update/{id}', [MenuController::class, 'update']);
+
+Route::get('/menu/delete/{id}', [MenuController::class, 'delete']);
+
 
 
 
