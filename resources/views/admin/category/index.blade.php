@@ -29,8 +29,8 @@
                         {{ $item->name }}
                       </td>
                       <td>
-                        <a href="{{ URL::to('/categories/edit', ['id' => $item->id]) }}" class="btn btn-primary">Edit</a>
-                        <a href="{{ URL::to('/categories/delete', ['id' => $item->id]) }}" class="btn btn-danger">Delete</a>
+                        <a href="{{ route('category.edit', ['id' => $item->id]) }}" class="btn btn-primary">Edit</a>
+                        <a href="{{ route('category.delete', ['id' => $item->id]) }}" class="btn btn-danger">Delete</a>
                       </td>
                     </tr>
                   @endforeach

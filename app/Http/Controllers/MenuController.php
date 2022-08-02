@@ -32,7 +32,7 @@ class MenuController extends Controller
             'parent_id' => $request->parent_id,
             'slug' => Str::slug($request->name)
         ]);
-        return redirect('/admin.menu');
+        return redirect()-> route('menu.index');
     }
 
     public function getMenus ($parentId){
@@ -54,12 +54,12 @@ class MenuController extends Controller
             'parent_id' => $request->parent_id,
             'slug' => Str::slug($request->name)
         ]);
-        return redirect('/admin.menu');
+        return redirect()-> route('menu.index');
     }
 
     public function delete ($id) {
         $this->menu->find($id)->delete();
-        return redirect('/admin.menu'); 
+        return redirect()-> route('menu.index'); 
     }
     
 }

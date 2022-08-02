@@ -12,3 +12,11 @@
 .register-page {
     margin-top: -10%;
 }
+.choose-input{
+    width: 30%;
+}
+@media ( max-width : 768px ) {
+    .choose-input{
+        width: 100%;
+    }     
+}

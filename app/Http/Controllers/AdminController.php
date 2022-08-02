@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     public function loginAdmin () {
+        if(auth()->check()){
+            return redirect()->route('admin.dashboard');
+        }
         return view('login');
     }
     public function postLoginAdmin (Request $request) {
@@ -15,7 +18,7 @@ class AdminController extends Controller
             "email" => $request->email,
             "password"=> $request->password
         ] , $remember)){
-            return redirect()->to('admin/dashboard');
+            return redirect()->route('admin.dashboard');
         }
     }
 }

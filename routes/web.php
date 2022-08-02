@@ -2,22 +2,24 @@
 
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\MenuController;
+
+
+
+
 
 
 Route::get('/admin',  [AdminController::class, 'loginAdmin']);
-
 Route::post('/admin',  [AdminController::class, 'postLoginAdmin']);
 
 
 
 
 Route::prefix('admin')->group(function(){
-    Route::get('/dashboard', [
+    Route::get('dashboard', [
         'as' => 'admin.dashboard',
-        'uses' => 'App\Http\Controllers\DashboardController@index'
+        'uses' => 'App\Http\Controllers\DashboardController@dashboard'
     ]);
+    //category admin
     Route::prefix('categories')->group(function(){
         Route::get('/', [
             'as' => 'category.index',
@@ -27,40 +29,68 @@ Route::prefix('admin')->group(function(){
             'as' => 'category.create',
             'uses' => 'App\Http\Controllers\CategoryController@create'
         ]);
+        Route::post('/store', [
+            'as' => 'category.store',
+            'uses' => 'App\Http\Controllers\CategoryController@store'
+        ]);
+
+        Route::get('/edit/{id}', [
+            'as' => 'category.edit',
+            'uses' => 'App\Http\Controllers\CategoryController@edit'
+        ]);
+        Route::post('/update/{id}', [
+            'as' => 'category.update',
+            'uses' => 'App\Http\Controllers\CategoryController@update'
+        ]);
+        Route::get('/delete/{id}', [
+            'as' => 'category.delete',
+            'uses' => 'App\Http\Controllers\CategoryController@delete'
+        ]);
+    });
+    //menu admin
+    Route::prefix('menu')->group(function(){
+        Route::get('/', [
+            'as' => 'menu.index',
+            'uses' => 'App\Http\Controllers\MenuController@index'
+        ]);
+        Route::get('/create', [
+            'as' => 'menu.create',
+            'uses' => 'App\Http\Controllers\MenuController@create'
+        ]);
+        Route::post('/store', [
+            'as' => 'menu.store',
+            'uses' => 'App\Http\Controllers\MenuController@store'
+        ]);
+
+        Route::get('/edit/{id}', [
+            'as' => 'menu.edit',
+            'uses' => 'App\Http\Controllers\MenuController@edit'
+        ]);
+
+        Route::post('/update/{id}', [
+            'as' => 'menu.update',
+            'uses' => 'App\Http\Controllers\MenuController@update'
+        ]);
+
+        Route::get('/delete/{id}', [
+            'as' => 'menu.delete',
+            'uses' => 'App\Http\Controllers\MenuController@delete'
+        ]);
+    });
+
+    //products
+    Route::prefix('products')->group(function(){
+        Route::get('/', [
+            'as' => 'prodducts.index',
+            'uses' => 'App\Http\Controllers\AdminProductController@index'
+        ]);
+        Route::get('/create', [
+            'as' => 'prodducts.create',
+            'uses' => 'App\Http\Controllers\AdminProductController@create'
+        ]);
     });
 });
 
-//category
-
-
-
-
-//category
-// Route::get('/categories', [CategoryController::class, 'index']);
-
-// Route::get('/categories/create', [CategoryController::class, 'create']);
-
-// Route::post('/categories/store', [CategoryController::class, 'store']);
-
-// Route::get('/categories/edit/{id}', [CategoryController::class, 'edit']);
-
-// Route::post('/categories/update/{id}', [CategoryController::class, 'update']);
-
-// Route::get('/categories/delete/{id}', [CategoryController::class, 'delete']);
-
-
-
-// Route::get('/menu', [MenuController::class, 'index']);
-
-// Route::get('/menu/create', [MenuController::class, 'create']);
-
-// Route::post('/menu/store', [MenuController::class, 'store']);
-
-// Route::get('/menu/edit/{id}', [MenuController::class, 'edit']);
-
-// Route::post('/menu/update/{id}', [MenuController::class, 'update']);
-
-// Route::get('/menu/delete/{id}', [MenuController::class, 'delete']);
 
 
 

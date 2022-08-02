@@ -13,7 +13,7 @@
           <div class="card">
             @include('partials.content-header' , ['name' => 'Create Menu'])
             <div class="card-body">
-                <form action="{{ URL::to('menu/store') }}" method="post">
+                <form action="{{ route('menu.store') }}" method="post">
                     @csrf
                     <div class="form-group">
                         <label>Name Menu</label>

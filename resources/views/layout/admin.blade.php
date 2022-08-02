@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('backend/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/dist/css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/dist/css/custom.css') }}">
+    @yield('css')
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -24,6 +25,15 @@
 {{-- <script src="{{ asset('backend/plugins/jsgrid/demos/db.js') }}"></script>
 <script src="{{ asset('backend/plugins/jsgrid/jsgrid.min.js') }}"></script> --}}
 <script src="{{ asset('backend/dist/js/adminlte.min.js') }}"></script>
+@yield('js')
+
+
+
+
+
+
+
+
 {{-- <script>
     $(function () {
       $("#jsGrid1").jsGrid({

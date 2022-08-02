@@ -13,7 +13,7 @@
           <div class="card">
             @include('partials.content-header' , ['name' => 'Create Category'])
             <div class="card-body">
-                <form action="{{ URL::to('categories/store') }}" method="post">
+                <form action="{{ route('category.store') }}" method="post">
                     @csrf
                     <div class="form-group">
                         <label>Name Category</label>

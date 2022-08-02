@@ -22,6 +22,32 @@
               </p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tree"></i>
+              <p>
+                Products
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('prodducts.create') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add New</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('prodducts.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>List Products</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -56,13 +82,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ URL::to('/menu/create') }}" class="nav-link">
+                <a href="{{ route('menu.create') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add New</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ URL::to('/menu') }}" class="nav-link">
+                <a href="{{ route('menu.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List Menu</p>
                 </a>
