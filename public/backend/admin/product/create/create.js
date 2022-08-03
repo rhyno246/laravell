@@ -16,7 +16,7 @@ $(function () {
             .html(fileName);
     });
 
-    let editor_config = {
+    var editor_config = {
         path_absolute: "/",
         selector: "textarea.tinymce_editor_init",
         relative_urls: false,
@@ -29,16 +29,16 @@ $(function () {
         toolbar:
             "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",
         file_picker_callback: function (callback, value, meta) {
-            let x =
+            var x =
                 window.innerWidth ||
                 document.documentElement.clientWidth ||
                 document.getElementsByTagName("body")[0].clientWidth;
-            let y =
+            var y =
                 window.innerHeight ||
                 document.documentElement.clientHeight ||
                 document.getElementsByTagName("body")[0].clientHeight;
 
-            let cmsURL =
+            var cmsURL =
                 editor_config.path_absolute +
                 "filemanager?editor=" +
                 meta.fieldname;

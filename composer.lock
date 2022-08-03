@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "68b07150d8fb5e1b5d078385e83f6725",
+    "content-hash": "c1576da3e836063bcfbefd86418c1d14",
     "packages": [
         {
             "name": "brick/math",
@@ -5108,7 +5108,7 @@
         },
         {
             "name": "unisharp/laravel-filemanager",
-            "version": "v2.5.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/UniSharp/laravel-filemanager.git",
@@ -5140,6 +5140,7 @@
                 "ext-gd": "to use GD library based image processing.",
                 "ext-imagick": "to use Imagick based image processing."
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -8127,7 +8128,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "unisharp/laravel-filemanager": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

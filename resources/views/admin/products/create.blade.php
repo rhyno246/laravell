@@ -18,7 +18,7 @@
           <div class="card">
             @include('partials.content-header' , ['name' => 'Create Product'])
             <div class="card-body">
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="{{ route('prodducts.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label>Name Product</label>

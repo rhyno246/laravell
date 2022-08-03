@@ -29,4 +29,10 @@ class AdminProductController extends Controller
         $htmlOption = $this->getCategory($parentId = '');
         return view ('admin.products.create' ,compact('htmlOption'));
     }
+
+    //upload file name feature image
+    public function store (Request $request) {
+        $filename = $request->feature_image_path->getClientOriginalName();
+        $path = $request->file('feature_image_path')->storeAs('public/product', $filename);
+    }
 }
