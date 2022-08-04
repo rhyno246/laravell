@@ -25,30 +25,33 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>ssaddsasa</td>
+                    @foreach ($products as $item)
+                      <tr>
+                        <td>{{ $item->id }}</td>
                         <td>
-                          product name
+                          {{ $item->name }}
                         </td>
                         <td>
-                            product price
+                            {{ number_format($item->price) }}
                         </td>
                         <td>
-                            product image
+                            <img src="{{ $item->feature_image_path ? $item->feature_image_path : 'https://dummyimage.com/80x80/000/fff' }}" alt="" style="width: 80px" height="80px">
                         </td>
                         <td>
-                            product category
+                            {{ optional($item->categoriesInstance)->name }}
                         </td>
                         <td>
-                          <a href="" class="btn btn-primary">Edit</a>
+                          <a href="{{ route('prodducts.edit', ['id'=> $item->id]) }}" class="btn btn-primary">Edit</a>
                           <a href="" class="btn btn-danger">Delete</a>
                         </td>
-                      </tr>
+                    </tr>
+                    @endforeach
+                    
                 </tbody>
               </table>
               
               <div class="mt-3">
-                {{-- {!! $categories->withQueryString()->links('pagination::bootstrap-5') !!} --}}
+                {!! $products->withQueryString()->links('pagination::bootstrap-5') !!}
               </div>
             </div>
           </div>

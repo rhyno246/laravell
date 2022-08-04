@@ -1,11 +1,10 @@
 <?php
 namespace App\Traits;
-use Storage;
 
-/**
- * 
- */
+use Illuminate\Support\Facades\Storage;
+
 trait StorageImageTrait
+
 {
     //upload file name feature image ,  storeAs -> get exact name image
     public function storageTraitUpload ($request , $feildName , $folderName) {
