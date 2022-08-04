@@ -1,7 +1,7 @@
 $(function () {
     $(".choose-tags").select2({
         tags: true,
-        tokenSeparators: [",", " "],
+        tokenSeparators: [","],
     });
 
     $(".select-category").select2({

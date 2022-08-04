@@ -30,7 +30,7 @@
                     </div>
 
                     <div class="form-group">
-                        <select class="form-control select-category" name="parent_id" style="width: 100%;">
+                        <select class="form-control select-category" name="categories_id" style="width: 100%;">
                           <option selected="selected" value="">Choose Category Product</option>
                           {!! $htmlOption !!}
                         </select>
@@ -45,9 +45,9 @@
                     <div class="form-group">
                       <label>Choose Tags</label>
                       <select class="form-control choose-tags" name="tags[]" multiple="multiple">
-                        <option selected="selected">orange</option>
+                        {{-- <option selected="selected">orange</option>
                         <option>white</option>
-                        <option selected="selected">purple</option>
+                        <option selected="selected">purple</option> --}}
                       </select>
                     </div>
 
