@@ -45,9 +45,6 @@
                     <div class="form-group">
                       <label>Choose Tags</label>
                       <select class="form-control choose-tags" name="tags[]" multiple="multiple">
-                        {{-- <option selected="selected">orange</option>
-                        <option>white</option>
-                        <option selected="selected">purple</option> --}}
                       </select>
                     </div>
 

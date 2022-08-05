@@ -3,7 +3,7 @@
 
 
 @section('title')
-<title>Edit Product</title>
+<title>Edit Product - {{ $productSingle->name }}</title>
 @endsection
 
 @section('css')
@@ -18,7 +18,66 @@
           <div class="card">
             @include('partials.content-header' , ['name' => 'Edit Product'])
             <div class="card-body">
-                dsadasasdsda
+              <form action="{{ route('prodducts.update' , ['id' => $productSingle->id]) }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                    <label>Name Product</label>
+                    <input type="text" class="form-control" name="name" value="{{ $productSingle->name }}">
+                </div>
+                <div class="form-group">
+                    <label>Price Product</label>
+                    <input type="text" class="form-control" name="price" value="{{ number_format((float)$productSingle->price, 0)}}">
+                </div>
+
+                <div class="form-group">
+                    <select class="form-control select-category" name="categories_id" style="width: 100%;">
+                      <option selected="selected" value="">Choose Category Product</option>
+                      {!! $htmlOption !!}
+                    </select> 
+                </div>
+
+
+                <div class="form-group">
+                  <label>Content</label>
+                  <textarea class="form-control tinymce_editor_init" name="content" rows="15">{{ $productSingle->content }}</textarea>
+                </div>
+
+                <div class="form-group">
+                  <label>Choose Tags</label>
+                  <select class="form-control choose-tags" name="tags[]" multiple="multiple">
+                    @foreach ($productSingle->tags as $item)
+                      <option value="{{ $item->name }}" selected>{{ $item->name }}</option>
+                    @endforeach
+                  </select>
+                </div>
+
+
+                <div class="form-group choose-input">
+                    <label for="exampleInputFile">Feature Image</label>
+                    <input type="file" class="form-control-file" id="exampleInputFile" name="feature_image_path">
+                    <div class="img-feature" style="max-width: 200px; margin: 40px 0">
+                      <img src="{{ $productSingle->feature_image_path }}" alt="" class="img-fluid">
+                    </div>
+                </div>
+
+                <div class="form-group choose-input">
+                    <label>List Image</label>
+                    <input type="file" multiple class="form-control-file" id="exampleInputFile" name="image_path[]">
+                    <div class="img-feature" style="margin: 40px 0">
+                        <div class="row">
+                          @foreach ($productSingle->images as $item)
+                          <div class="col-md-3">
+                            <img src="{{ $item->image_path }}" alt="" class="img-fluid">
+                          </div>
+                          @endforeach
+                        </div>
+                    </div>
+                </div>
+
+                
+                
+                <button class="btn btn-primary">Update Product</button>
+            </form>
             </div>
           </div>
       </div>

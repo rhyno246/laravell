@@ -1,3 +1,6 @@
+body{
+    overflow-x: hidden;
+}
 .content {
     padding: 1.2rem 0.5rem 0 !important;
 }
@@ -12,9 +15,7 @@
 .register-page {
     margin-top: -10%;
 }
-.choose-input {
-    width: 30%;
-}
+
 .select2-container--default
     .select2-selection--multiple
     .select2-selection__choice {
@@ -26,6 +27,9 @@
 }
 .select2-container {
     width: 100% !important;
+}
+.card{
+    margin-bottom: 0 !important;
 }
 
 @media (max-width: 768px) {

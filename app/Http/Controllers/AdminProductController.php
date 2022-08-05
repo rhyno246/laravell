@@ -51,6 +51,7 @@ class AdminProductController extends Controller
         //insert data to table product
         try {
             DB::beginTransaction();
+
             $dataProductCreate = [
                 'name' => $request->name,
                 'price'=>$request->price,
@@ -65,8 +66,7 @@ class AdminProductController extends Controller
             }
             $product = $this->product->create($dataProductCreate);
     
-    
-            //insert data to table product_images
+
     
             if($request-> hasFile('image_path')){
                 foreach($request->image_path as $fileItem) {
@@ -78,16 +78,10 @@ class AdminProductController extends Controller
                 }
             }
     
-            //insert tag to table tags
-
             if(!empty($request->tags)){
                 foreach ( $request->tags as $tagItem){
                     $tagInstance = $this->tag->firstOrCreate(['name'=> $tagItem]);
                     $tagIds[] = $tagInstance->id;
-                    // $this->productTag->create([
-                    //     'product_id'=> $product->id,
-                    //     'tag_id' => $tagInstance->id
-                    // ]);
                 }
             }
             $product->tags()->attach($tagIds);
@@ -102,7 +96,60 @@ class AdminProductController extends Controller
 
     public function edit ($id) {
         $productSingle = $this->product->find($id);
-        return view ('admin.products.edit');
+        $htmlOption = $this->getCategory($productSingle->categories_id);
+        return view ('admin.products.edit', compact('productSingle', 'htmlOption'));
+    }
+
+    public function update (Request $request, $id){
+        try {
+            DB::beginTransaction();
+
+            $dataProductUpdated = [
+                'name' => $request->name,
+                'price'=>$request->price,
+                'content'=>$request->content,
+                'user_id'=>auth()->id(),
+                'categories_id'=> $request->categories_id,
+            ];
+            $dataUploadFeatureImage = $this->storageTraitUpload($request ,'feature_image_path' , 'product');
+            if(!empty($dataUploadFeatureImage)){
+                $dataProductUpdated['feature_image_name'] = $dataUploadFeatureImage['file_name'];
+                $dataProductUpdated['feature_image_path'] = $dataUploadFeatureImage['file_path'];
+            }
+            $this->product->find($id)->update($dataProductUpdated);
+            $product = $this->product->find($id);
+
+
+
+    
+            if($request-> hasFile('image_path')){
+                foreach($request->image_path as $fileItem) {
+                    $this->productImage->where('product_id', $id)->delete();
+                    $imageDetail = $this->storageTraitUploadMutiple($fileItem, 'product');
+                    $product->images()->create([
+                        'image_path'=>$imageDetail['file_path'],
+                        'image_name'=>$imageDetail['file_name']
+                    ]);
+                }
+            }
+    
+            if(!empty($request->tags)){
+                foreach ( $request->tags as $tagItem){
+                    $tagInstance = $this->tag->firstOrCreate(['name'=> $tagItem]);
+                    $tagIds[] = $tagInstance->id;
+                }
+            }
+            $product->tags()->sync($tagIds);
+            DB::commit();
+            return redirect()->route('prodducts.index');
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            Log::error('Message : ' . $exception->getMessage() . '-----------------Line : ' . $exception->getLine());
+        }
+    }
+
+    public function delete ($id){
+        dd($id);
     }
 
 }

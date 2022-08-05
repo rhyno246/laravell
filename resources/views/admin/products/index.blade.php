@@ -32,7 +32,7 @@
                           {{ $item->name }}
                         </td>
                         <td>
-                            {{ number_format($item->price) }}
+                            {{ number_format((float)$item->price , 0) }}
                         </td>
                         <td>
                             <img src="{{ $item->feature_image_path ? $item->feature_image_path : 'https://dummyimage.com/80x80/000/fff' }}" alt="" style="width: 80px" height="80px">
@@ -42,7 +42,7 @@
                         </td>
                         <td>
                           <a href="{{ route('prodducts.edit', ['id'=> $item->id]) }}" class="btn btn-primary">Edit</a>
-                          <a href="" class="btn btn-danger">Delete</a>
+                          <a href="{{ route('prodducts.delete' , ['id' => $item->id ]) }}" data-url="{{ route('prodducts.delete' , ['id' => $item->id ]) }}" class="btn btn-danger delete-items">Delete</a>
                         </td>
                     </tr>
                     @endforeach
@@ -58,6 +58,12 @@
       </div>
     </div>
   </div>
+@endsection
+
+
+@section('js')
+  <script src="{{ asset('backend/admin/product/create/sweetalert2@11.js')}}"></script>
+  <script src="{{ asset('backend/admin/product/create/alert.js')}}"></script>
 @endsection
 
 
