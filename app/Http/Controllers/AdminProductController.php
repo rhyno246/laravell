@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Components\CategoryRecusive;
+use App\Http\Requests\ProductAddRequest;
+use App\Traits\DeleteModelTrait;
 use App\Traits\StorageImageTrait;
 use Illuminate\Http\Request;
 use App\Models\Category;
@@ -14,7 +16,7 @@ use Illuminate\Support\Facades\Log;
 
 class AdminProductController extends Controller
 {   
-    use StorageImageTrait;
+    use StorageImageTrait, DeleteModelTrait;
     private $category;
     private $product;
     private $productImage;
@@ -47,7 +49,7 @@ class AdminProductController extends Controller
     }
 
     
-    public function store (Request $request) {
+    public function store (ProductAddRequest $request) {
         //insert data to table product
         try {
             DB::beginTransaction();
@@ -77,7 +79,7 @@ class AdminProductController extends Controller
                     ]);
                 }
             }
-    
+            $tagIds = [];
             if(!empty($request->tags)){
                 foreach ( $request->tags as $tagItem){
                     $tagInstance = $this->tag->firstOrCreate(['name'=> $tagItem]);
@@ -132,7 +134,7 @@ class AdminProductController extends Controller
                     ]);
                 }
             }
-    
+            $tagIds = [];
             if(!empty($request->tags)){
                 foreach ( $request->tags as $tagItem){
                     $tagInstance = $this->tag->firstOrCreate(['name'=> $tagItem]);
@@ -149,7 +151,7 @@ class AdminProductController extends Controller
     }
 
     public function delete ($id){
-        dd($id);
+        return $this->deleteModelTrait($id, $this->product);
     }
 
 }

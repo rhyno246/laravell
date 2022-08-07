@@ -22,18 +22,27 @@
                     @csrf
                     <div class="form-group">
                         <label>Name Product</label>
-                        <input type="text" class="form-control" name="name">
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}">
+                        @error('name')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>Price Product</label>
-                        <input type="text" class="form-control" name="price">
+                        <input type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}">
+                        @error('price')
+                          <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="form-group">
-                        <select class="form-control select-category" name="categories_id" style="width: 100%;">
+                        <select class="form-control select-category @error('categories_id') is-invalid @enderror" name="categories_id" style="width: 100%;">
                           <option selected="selected" value="">Choose Category Product</option>
                           {!! $htmlOption !!}
                         </select>
+                        @error('categories_id')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
 
 
