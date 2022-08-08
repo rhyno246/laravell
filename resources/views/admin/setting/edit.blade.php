@@ -14,11 +14,11 @@
           <div class="card">
             @include('partials.content-header' , ['name' => 'Create Settings'])
             <div class="card-body">
-                <form action="{{ route('setting.store') }}" method="post">
+                <form action="{{ route('setting.update' , ['id' => $settingDetail->id]) }}" method="post">
                     @csrf
                     <div class="form-group">
                         <label>Config key</label>
-                        <input type="text" class="form-control @error('config_key') is-invalid @enderror" name="config_key" value="{{ old('config_key') }}">
+                        <input type="text" class="form-control @error('config_key') is-invalid @enderror" name="config_key" value="{{ $settingDetail->config_key }}">
 
                         @error('config_key')
                             <div class="alert alert-danger" role="alert">{{ $message }}</div>
@@ -26,21 +26,23 @@
                     </div>
 
 
-                    @if(request()->type === 'Text')
+                    @if($settingDetail->type === 'Text')
                       <div class="form-group">
                         <label>Config value</label>
-                        <input type="text" class="form-control @error('config_value') is-invalid @enderror" name="config_value"  value="{{ old('config_value') }}">
+                        <input type="text" class="form-control @error('config_value') is-invalid @enderror" name="config_value"  value="{{ $settingDetail->config_value }}">
                         @error('config_value')
                             <div class="alert alert-danger" role="alert">{{ $message }}</div>
                         @enderror
+                        <input type="text" hidden name="type" value="{{$settingDetail->type }}">
                       </div>
-                      @elseif(request()->type === 'Textarea')
+                      @elseif($settingDetail->type === 'Textarea')
                       <div class="form-group">
                         <label>Config value</label>
-                        <textarea name="config_value" class="form-control @error('config_value') is-invalid @enderror" name="config_value"  value="{{ old('config_value') }}" rows="10"></textarea>
+                        <textarea name="config_value" class="form-control @error('config_value') is-invalid @enderror" name="config_value"  value="" rows="10">{{ $settingDetail->config_value }}</textarea>
                         @error('config_value')
                           <div class="alert alert-danger" role="alert">{{ $message }}</div>
                          @enderror
+                         <input type="text" hidden name="type" value="{{ $settingDetail->type }}">
                       </div>
                     @endif
 

@@ -48,7 +48,7 @@
                     <td>
                       
                       <a href="{{ route('setting.edit' , ['id' => $item->id ]) }}" class="btn btn-primary">Edit</a>
-                      <a href="" class="btn btn-danger delete-slide">Delete</a>
+                      <a href="{{ route('setting.delete' , ['id' => $item->id ]) }}" data-url="{{ route('setting.delete' , ['id' => $item->id ]) }}" class="btn btn-danger delete-setting">Delete</a>
                     </td>
                   @endforeach
                 </tr>
@@ -63,6 +63,12 @@
       </div>
     </div>
   </div>
+@endsection
+
+
+@section('js')
+  <script src="{{ asset('backend/admin/product/create/sweetalert2@11.js')}}"></script>
+  <script src="{{ asset('backend/admin/product/create/alert.js')}}"></script>
 @endsection
 
 

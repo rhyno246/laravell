@@ -14,7 +14,7 @@
           <div class="card">
             @include('partials.content-header' , ['name' => 'Create Settings'])
             <div class="card-body">
-                <form action="{{ route('setting.store' ) }}" method="post">
+                <form action="{{ route('setting.store' . '?type=' . request()->type )}}" method="post">
                     @csrf
                     <div class="form-group">
                         <label>Config key</label>
@@ -33,6 +33,7 @@
                         @error('config_value')
                             <div class="alert alert-danger" role="alert">{{ $message }}</div>
                         @enderror
+                        <input type="text" hidden name="type" value="{{ request()->type }}">
                       </div>
                       @elseif(request()->type === 'Textarea')
                       <div class="form-group">
@@ -41,6 +42,7 @@
                         @error('config_value')
                           <div class="alert alert-danger" role="alert">{{ $message }}</div>
                          @enderror
+                         <input type="text" hidden name="type" value="{{ request()->type }}">
                       </div>
                     @endif
 

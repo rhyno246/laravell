@@ -148,12 +148,20 @@ Route::prefix('admin')->group(function(){
             'uses' => 'App\Http\Controllers\AdminSettingController@create'
         ]);
         Route::post('/store', [
-            'as' => 'setting.store',
+            'as' => 'setting.store' . '?type=' .  request()->type,
             'uses' => 'App\Http\Controllers\AdminSettingController@store'
         ]);
         Route::get('/edit/{id}', [
             'as' => 'setting.edit',
             'uses' => 'App\Http\Controllers\AdminSettingController@edit'
+        ]);
+        Route::post('/update/{id}', [
+            'as' => 'setting.update',
+            'uses' => 'App\Http\Controllers\AdminSettingController@update'
+        ]);
+        Route::get('/delete/{id}', [
+            'as' => 'setting.delete',
+            'uses' => 'App\Http\Controllers\AdminSettingController@delete'
         ]);
     });
 });
