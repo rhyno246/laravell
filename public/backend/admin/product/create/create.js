@@ -1,5 +1,5 @@
 $(function () {
-    $(".choose-tags").select2({
+    $(".choose-tags,.choose-role").select2({
         tags: true,
         tokenSeparators: [","],
     });

@@ -164,6 +164,24 @@ Route::prefix('admin')->group(function(){
             'uses' => 'App\Http\Controllers\AdminSettingController@delete'
         ]);
     });
+
+
+    Route::prefix('users')->group(function(){
+        Route::get('/', [
+            'as' => 'users.index',
+            'uses' => 'App\Http\Controllers\AdminUsersController@index'
+        ]);
+        Route::get('/create', [
+            'as' => 'users.create',
+            'uses' => 'App\Http\Controllers\AdminUsersController@create'
+        ]);
+        Route::post('/store', [
+            'as' => 'users.store',
+            'uses' => 'App\Http\Controllers\AdminUsersController@store'
+        ]);
+    });
+
+
 });
 
 
