@@ -22,7 +22,7 @@
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th>Users ID</th>
+                  <th>Role</th>
                   <th>Users Name</th>
                   <th>Users Email</th>
                   <th>Action</th>
@@ -41,7 +41,7 @@
                           {{ $item->email }}
                         </td>
                         <td>
-                        <a href="" class="btn btn-primary">Edit</a>
+                        <a href="{{ route('users.edit' , [ 'id'=> $item->id ]) }}" class="btn btn-primary">Edit</a>
                         <a href="" class="btn btn-danger delete-users">Delete</a>
                         </td>
                     </tr>
