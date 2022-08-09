@@ -35,28 +35,33 @@
                     
 
                     <div class="row">
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-header">
-                                    <div class="icheck-primary d-inline">
-                                        <input type="checkbox" id="checkboxPrimary1">
-                                        <label for="checkboxPrimary1">
-                                            Module Product Config
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    @for ( $i = 0 ; $i <= 4 ; $i++)
-                                        <div class="icheck-primary" style="margin-bottom : 20px !important;">
-                                            <input type="checkbox" id="checkboxPrimary-{{$i}}">
-                                            <label for="checkboxPrimary-{{$i}}">
-                                                Create Product
+
+                        @foreach ($permissionParent as $item)
+                            <div class="col-md-12">
+                                <div class="card mt-4">
+                                    <div class="card-header bg-secondary">
+                                        <div class="icheck-primary d-inline">
+                                            <input type="checkbox" id="{{$item->name}}">
+                                            <label for="{{ $item->name }}">
+                                                {{ $item->name }}
                                             </label>
                                         </div>
-                                    @endfor
+                                    </div>
+                                    <div class="card-body row">
+                                        @foreach ($item->permissionChild as $childItem)
+                                            <div class="col-md-3">
+                                                <div class="icheck-primary" style="margin-bottom : 20px !important;">
+                                                    <input type="checkbox" name="permission_id[]" id="checkboxPrimary-{{$childItem->name}}" value="{{ $childItem->id }}">
+                                                    <label for="checkboxPrimary-{{$childItem->name}}">
+                                                        {{ $childItem->name }}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
 
 
