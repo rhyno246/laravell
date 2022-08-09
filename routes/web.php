@@ -187,8 +187,30 @@ Route::prefix('admin')->group(function(){
             'as' => 'users.update',
             'uses' => 'App\Http\Controllers\AdminUsersController@update'
         ]);
+        Route::get('/delete/{id}', [
+            'as' => 'users.delete',
+            'uses' => 'App\Http\Controllers\AdminUsersController@delete'
+        ]);
     });
 
+
+
+    Route::prefix('role')->group(function(){
+        Route::get('/', [
+            'as' => 'role.index',
+            'uses' => 'App\Http\Controllers\AdminRoleController@index'
+        ]);
+        Route::get('/create', [
+            'as' => 'role.create',
+            'uses' => 'App\Http\Controllers\AdminRoleController@create'
+        ]);
+        Route::post('/store', [
+            'as' => 'role.store',
+            'uses' => 'App\Http\Controllers\AdminRoleController@store'
+        ]);
+    });
+
+    
 
 });
 

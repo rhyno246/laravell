@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
+use App\Traits\DeleteModelTrait;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
 class AdminUsersController extends Controller
 {
+    use DeleteModelTrait;
     private $user;
     private $role;
     public function __construct(User $user ,Role $role){
@@ -66,4 +68,7 @@ class AdminUsersController extends Controller
             Log::error('Message : ' . $exception->getMessage() . '-----------------Line : ' . $exception->getLine());
         }
     } 
+    public function delete ($id){   
+        return $this->deleteModelTrait($id, $this->user);
+    }
 }

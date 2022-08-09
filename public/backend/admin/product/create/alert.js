@@ -37,4 +37,5 @@ $(function () {
     $(document).on("click", ".delete-items", actionDelete);
     $(document).on("click", ".delete-slide", actionDelete);
     $(document).on("click", ".delete-setting", actionDelete);
+    $(document).on("click", ".delete-users", actionDelete);
 });

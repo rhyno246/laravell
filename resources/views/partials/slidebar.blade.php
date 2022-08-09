@@ -147,6 +147,15 @@
 
           </li>
 
+          <li class="nav-item">
+            <a href="{{ route('role.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-lock"></i>
+              <p>
+                Permission Users
+              </p>
+            </a>
+          </li>
+
         </ul>
       </nav>
     </div>

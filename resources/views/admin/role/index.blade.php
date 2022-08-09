@@ -3,7 +3,7 @@
 
 
 @section('title')
-<title>List Users</title>
+<title>List Role</title>
 @endsection
 
 @section('content')
@@ -11,12 +11,12 @@
     <div class="content">
       <div class="container-fluid">
           <div class="card">
-            @include('partials.content-header' , ['name' => 'List Users'])
+            @include('partials.content-header' , ['name' => 'List Role'])
             
             <div class="card-body">
               <div class="btn-group mb-4">
-                <a href="{{ route('users.create') }}" class="btn btn-primary">
-                  Add Users
+                <a href="{{ route('role.create') }}" class="btn btn-primary">
+                  Add Role
                 </a>
               </div>
               <table id="example2" class="table table-bordered table-hover">
@@ -24,12 +24,12 @@
                 <tr>
                   <th>Role</th>
                   <th>Users Name</th>
-                  <th>Users Email</th>
+                  <th>Users Display_Name</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                    @foreach ($users as $item)
+                    @foreach ($roles as $item)
                     <tr>
                         <td>
                           {{ $item->id }}
@@ -38,11 +38,11 @@
                           {{ $item->name }}
                         </td>
                         <td>
-                          {{ $item->email }}
+                          {{ $item->display_name }}
                         </td>
                         <td>
-                        <a href="{{ route('users.edit' , [ 'id'=> $item->id ]) }}" class="btn btn-primary">Edit</a>
-                        <a href="{{ route('users.delete', ['id'=> $item->id]) }}" data-url="{{ route('users.delete' , ['id' => $item->id ]) }}" class="btn btn-danger delete-users">Delete</a>
+                        {{-- <a href="{{ route('users.edit' , [ 'id'=> $item->id ]) }}" class="btn btn-primary">Edit</a>
+                        <a href="{{ route('users.delete', ['id'=> $item->id]) }}" data-url="{{ route('users.delete' , ['id' => $item->id ]) }}" class="btn btn-danger delete-users">Delete</a> --}}
                         </td>
                     </tr>
                     @endforeach
@@ -50,7 +50,7 @@
               </table>
               
               <div class="mt-3">
-                {!! $users->withQueryString()->links('pagination::bootstrap-5') !!}
+                {!! $roles->withQueryString()->links('pagination::bootstrap-5') !!}
               </div>
             </div>
           </div>
