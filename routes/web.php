@@ -208,6 +208,14 @@ Route::prefix('admin')->group(function(){
             'as' => 'role.store',
             'uses' => 'App\Http\Controllers\AdminRoleController@store'
         ]);
+        Route::get('/edit/{id}', [
+            'as' => 'role.edit',
+            'uses' => 'App\Http\Controllers\AdminRoleController@edit'
+        ]);
+        Route::post('/update/{id}', [
+            'as' => 'role.update',
+            'uses' => 'App\Http\Controllers\AdminRoleController@update'
+        ]);
     });
 
     

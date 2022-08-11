@@ -3,7 +3,7 @@
 
 
 @section('title')
-<title>Create Role</title>
+<title>Edit Role - {{ $roleDetail->id }}</title>
 @endsection
 
 
@@ -19,18 +19,18 @@
     <div class="content">
       <div class="container-fluid">
           <div class="card">
-            @include('partials.content-header' , ['name' => 'Create Role'])
+            @include('partials.content-header' , ['name' => 'Edit Role'])
             <div class="card-body">
-                <form action="{{ route('role.store') }}" method="post">
+                <form action="{{ route('role.update',  ['id' => $roleDetail->id])  }}" method="post">
                     @csrf
                     <div class="form-group">
                         <label>Name Role</label>
-                        <input type="text" class="form-control" name="name">
+                        <input type="text" class="form-control" name="name" value="{{ $roleDetail->name }}">
                     </div>
 
                     <div class="form-group">
                         <label>Display Name</label>
-                        <textarea type="text" class="form-control" name="display_name" rows="5"></textarea>
+                        <textarea type="text" class="form-control" name="display_name" rows="5">{{ $roleDetail->display_name  }}</textarea>
                     </div>
                     
 
@@ -51,7 +51,8 @@
                                         @foreach ($item->permissionChild as $childItem)
                                             <div class="col-md-3">
                                                 <div class="icheck-primary" style="margin-bottom : 20px !important;">
-                                                    <input 
+                                                    <input
+                                                        {{ $permissionChecked->contains('id', $childItem->id) ? 'checked' : '' }}
                                                         type="checkbox" 
                                                         name="permission_id[]" 
                                                         id="checkboxPrimary-{{$childItem->name}}" 
@@ -71,7 +72,7 @@
                     </div>
 
 
-                    <button class="btn btn-primary mt-3">Create Role</button>
+                    <button class="btn btn-primary mt-3">Update Role</button>
                 </form>
             </div>
           </div>
