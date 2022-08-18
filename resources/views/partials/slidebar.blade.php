@@ -57,12 +57,15 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('category.create') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add New</p>
-                </a>
-              </li>
+              @can('gate-category-create')
+                <li class="nav-item">
+                  <a href="{{ route('category.create') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Add New</p>
+                  </a>
+                </li>
+              @endcan
+              
               <li class="nav-item">
                 <a href="{{ route('category.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -148,12 +151,29 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{ route('role.index') }}" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-lock"></i>
               <p>
-                Permission Users
+                Role & Permission
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('role.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p> Role</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('permissions.create') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                      Permission
+                  </p>
+                </a>
+              </li>
+            </ul>
           </li>
 
         </ul>

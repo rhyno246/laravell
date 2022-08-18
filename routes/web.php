@@ -23,11 +23,13 @@ Route::prefix('admin')->group(function(){
     Route::prefix('categories')->group(function(){
         Route::get('/', [
             'as' => 'category.index',
-            'uses' => 'App\Http\Controllers\CategoryController@index'
+            'uses' => 'App\Http\Controllers\CategoryController@index',
+            'middleware' => ('can:gate-category-list')
         ]);
         Route::get('/create', [
             'as' => 'category.create',
-            'uses' => 'App\Http\Controllers\CategoryController@create'
+            'uses' => 'App\Http\Controllers\CategoryController@create',
+            'middleware' => ('can:gate-category-create')
         ]);
         Route::post('/store', [
             'as' => 'category.store',
@@ -216,8 +218,23 @@ Route::prefix('admin')->group(function(){
             'as' => 'role.update',
             'uses' => 'App\Http\Controllers\AdminRoleController@update'
         ]);
+        Route::get('/delete/{id}', [
+            'as' => 'role.delete',
+            'uses' => 'App\Http\Controllers\AdminRoleController@delete'
+        ]);
     });
 
+
+    Route::prefix('permissions')->group(function(){
+        Route::get('/create', [
+            'as' => 'permissions.create',
+            'uses' => 'App\Http\Controllers\PermissionAdminController@createPermission'
+        ]);
+        Route::post('/store', [
+            'as' => 'permissions.store',
+            'uses' => 'App\Http\Controllers\PermissionAdminController@store'
+        ]);
+    });
     
 
 });

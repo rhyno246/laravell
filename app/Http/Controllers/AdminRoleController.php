@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Permission;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use App\Traits\DeleteModelTrait;
 
 class AdminRoleController extends Controller
 {
+    use DeleteModelTrait;
     private $role;
     private $permission;
     public function __construct (Role $role , Permission $permission) {
@@ -48,4 +50,12 @@ class AdminRoleController extends Controller
         $role->permissions()->sync($request->permission_id);
         return redirect()->route('role.index');
     }
+    public function delete (Request $request , $id){
+        $role = $this->role->find($id);
+        $role->permissions()->sync($request->permission_id);
+        return $this->deleteModelTrait($id, $this->role);
+    }
+
+
+   
 }

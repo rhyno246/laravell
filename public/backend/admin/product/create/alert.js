@@ -38,4 +38,5 @@ $(function () {
     $(document).on("click", ".delete-slide", actionDelete);
     $(document).on("click", ".delete-setting", actionDelete);
     $(document).on("click", ".delete-users", actionDelete);
+    $(document).on("click", ".delete-role", actionDelete);
 });

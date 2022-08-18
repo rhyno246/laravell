@@ -35,7 +35,14 @@
                     
 
                     <div class="row">
-
+                        <div class="col-md-12">
+                            <div class="icheck-primary d-inline">
+                                <input type="checkbox" id="checkall" class="checkbox_wrapper checkall">
+                                <label for="checkall">
+                                    Select All
+                                </label>
+                            </div>
+                        </div>
                         @foreach ($permissionParent as $item)
                             <div class="col-md-12">
                                 <div class="card mt-4 permission-item">
@@ -86,6 +93,10 @@
   <script>
     $('.checkbox_wrapper').on('click', function (){
         $(this).parents('.permission-item').find('.checkbox_child').prop('checked' , $(this).prop('checked'));
+    })
+    $('.checkall').on('click' , function () {
+        $(this).parents().find('.checkbox_wrapper').prop('checked', $(this).prop('checked'));
+        $(this).parents().find('.checkbox_child').prop('checked', $(this).prop('checked'));
     })
   </script>
 @endsection
